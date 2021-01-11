@@ -39,7 +39,10 @@ export default function App() {
 
         <Text style={{ color: 'white', fontSize: 30, fontWeight: 'bold' }}>Hello{" "}
           <TouchableWithoutFeedback
-            onPress={() => setModalIsVisible(true)}
+            onPress={() => {
+              setModalIsVisible(true)
+              inputValue = '';
+              }}
             style={{ backgroundColor: 'orange' }}
           >
             <Text>{name === '' ? 'Guest' : name}</Text>
@@ -68,7 +71,9 @@ export default function App() {
               }}
             >
               <TouchableOpacity
-                onPress={() => { setModalIsVisible(false) }}
+                onPress={() => { 
+                  setModalIsVisible(false)
+                   }}
                 style={{}}>
                 <Text style={{ paddingLeft: 10, fontSize: 20, fontWeight: 'bold' }}>x</Text>
               </TouchableOpacity>
@@ -84,7 +89,7 @@ export default function App() {
                 onChangeText={(text) => inputValue = text}
               />
               <Button title="Submit" onPress={() => {
-                setName(inputValue)
+                inputValue == undefined ? setName('') : setName(inputValue);
                 setModalIsVisible(false)
               }} />
             </View>
